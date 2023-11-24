@@ -126,7 +126,32 @@ fbq('track', 'PageView');
 <meta name="msapplication-TileImage" content="https://moldespdf.com.br/wp-content/uploads/2021/07/favi_icon.fw_-300x300.png">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"><script src="js/wp-emoji-release.min.js" defer></script></head>
 <body data-rsssl="1" class="page-template page-template-elementor_canvas page page-id-2928 wp-custom-logo elementor-default elementor-template-canvas elementor-kit-6 elementor-page elementor-page-2928">
-			<!-- Google Tag Manager (noscript) -->
+
+<script>
+   let prefix = ["https://app.monetizze.com.br"];
+
+function getParams() {
+    let t = "",
+        e = window.top.location.href,
+        r = new URL(e);
+    if (null != r) {
+        let a = r.searchParams.get("utm_source"),
+            n = r.searchParams.get("utm_medium"),
+            o = r.searchParams.get("utm_campaign"),
+            m = r.searchParams.get("utm_term"),
+            c = r.searchParams.get("utm_content"); - 1 !== e.indexOf("?") && (t = `&sck=${a}|${n}|${o}|${m}|${c}`), console.log(t)
+    }
+    return t
+}! function() {
+    var t = new URLSearchParams(window.location.search);
+    t.toString() && document.querySelectorAll("a").forEach(function(e) {
+        for (let r = 0; r < prefix.length; r++) - 1 !== e.href.indexOf(prefix[r]) && (-1 === e.href.indexOf("?") ? e.href += "?" + t.toString() + getParams() : e.href += "&" + t.toString() + getParams())
+    })
+}();
+console.log('');
+</script>
+	
+	<!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WWX5XB9"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
