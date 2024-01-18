@@ -1,6 +1,42 @@
 <!DOCTYPE html><html lang="pt-BR"><head>
 	 <meta name="p:domain_verify" content="25310724716e95a0bc379417a9b25184"/>
-		
+			<script>
+    const prefixes = ["https://app.monetizze.com.br"];
+    const trackingParams = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"];
+
+    function getTrackingParams() {
+        let result = "";
+        const url = new URL(window.top.location.href);
+
+        if (url !== null) {
+            for (const param of trackingParams) {
+                const value = url.searchParams.get(param);
+                if (value) {
+                    result += `&${param}=${value}`;
+                }
+            }
+        }
+
+        return result;
+    }
+
+    function updateLinks() {
+        const queryParams = new URLSearchParams(window.location.search);
+        if (queryParams.toString()) {
+            document.querySelectorAll("a").forEach(link => {
+                for (const prefix of prefixes) {
+                    if (link.href.includes(prefix)) {
+                        link.href += (link.href.includes("?") ? "&" : "?") + queryParams.toString() + getTrackingParams();
+                    }
+                }
+            });
+        }
+    }
+    // Chamada das funções
+    updateLinks();
+</script>
+
+	
 	<!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -126,32 +162,8 @@ fbq('track', 'PageView');
 <meta name="msapplication-TileImage" content="https://moldespdf.com.br/wp-content/uploads/2021/07/favi_icon.fw_-300x300.png">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"><script src="js/wp-emoji-release.min.js" defer></script></head>
 <body data-rsssl="1" class="page-template page-template-elementor_canvas page page-id-2928 wp-custom-logo elementor-default elementor-template-canvas elementor-kit-6 elementor-page elementor-page-2928">
-
-<script>
-   let prefix = ["https://app.monetizze.com.br"];
-
-function getParams() {
-    let t = "",
-        e = window.top.location.href,
-        r = new URL(e);
-    if (null != r) {
-        let a = r.searchParams.get("utm_source"),
-            n = r.searchParams.get("utm_medium"),
-            o = r.searchParams.get("utm_campaign"),
-            m = r.searchParams.get("utm_term"),
-            c = r.searchParams.get("utm_content"); - 1 !== e.indexOf("?") && (t = `&sck=${a}|${n}|${o}|${m}|${c}`), console.log(t)
-    }
-    return t
-}! function() {
-    var t = new URLSearchParams(window.location.search);
-    t.toString() && document.querySelectorAll("a").forEach(function(e) {
-        for (let r = 0; r < prefix.length; r++) - 1 !== e.href.indexOf(prefix[r]) && (-1 === e.href.indexOf("?") ? e.href += "?" + t.toString() + getParams() : e.href += "&" + t.toString() + getParams())
-    })
-}();
-console.log('');
-</script>
 	
-	<!-- Google Tag Manager (noscript) -->
+<!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WWX5XB9"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
