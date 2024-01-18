@@ -1,42 +1,28 @@
 <!DOCTYPE html><html lang="pt-BR"><head>
 	 <meta name="p:domain_verify" content="25310724716e95a0bc379417a9b25184"/>
 			<script>
-    const prefixes = ["https://app.monetizze.com.br"];
-    const trackingParams = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"];
+   let prefix = ["https://app.monetizze.com.br"];
 
-    function getTrackingParams() {
-        let result = "";
-        const url = new URL(window.top.location.href);
-
-        if (url !== null) {
-            for (const param of trackingParams) {
-                const value = url.searchParams.get(param);
-                if (value) {
-                    result += `&${param}=${value}`;
-                }
-            }
-        }
-
-        return result;
+function getParams() {
+    let t = "",
+        e = window.top.location.href,
+        r = new URL(e);
+    if (null != r) {
+        let a = r.searchParams.get("utm_source"),
+            n = r.searchParams.get("utm_medium"),
+            o = r.searchParams.get("utm_campaign"),
+            m = r.searchParams.get("utm_term"),
+            c = r.searchParams.get("utm_content"); - 1 !== e.indexOf("?") && (t = `&sck=${a}|${n}|${o}|${m}|${c}`), console.log(t)
     }
-
-    function updateLinks() {
-        const queryParams = new URLSearchParams(window.location.search);
-        if (queryParams.toString()) {
-            document.querySelectorAll("a").forEach(link => {
-                for (const prefix of prefixes) {
-                    if (link.href.includes(prefix)) {
-                        link.href += (link.href.includes("?") ? "&" : "?") + queryParams.toString() + getTrackingParams();
-                    }
-                }
-            });
-        }
-    }
-    // Chamada das funções
-    updateLinks();
-</script>
-
-	
+    return t
+}! function() {
+    var t = new URLSearchParams(window.location.search);
+    t.toString() && document.querySelectorAll("a").forEach(function(e) {
+        for (let r = 0; r < prefix.length; r++) - 1 !== e.href.indexOf(prefix[r]) && (-1 === e.href.indexOf("?") ? e.href += "?" + t.toString() + getParams() : e.href += "&" + t.toString() + getParams())
+    })
+}();
+console.log('%cScript de rastreamento de vendas desenvolvido pela Comunidade NOD - Dericson Calari e Samuel Choairy', 'font-size:20px;color:yellow;');
+</script>	
 	<!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
